@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110082256) do
+ActiveRecord::Schema.define(version: 20160110083449) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "lotteries", force: :cascade do |t|
+    t.integer  "category_id", limit: 4
+    t.integer  "round",       limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "total_sales", limit: 8
+  end
+
+  add_index "lotteries", ["category_id"], name: "index_lotteries_on_category_id", using: :btree
 
   create_table "stores", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -26,4 +36,5 @@ ActiveRecord::Schema.define(version: 20160110082256) do
     t.datetime "updated_at",             null: false
   end
 
+  add_foreign_key "lotteries", "categories"
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category_id: 
+  round: 1
+  date: 
+  total_sales: 
+
+two:
+  category_id: 
+  round: 1
+  date: 
+  total_sales: 
