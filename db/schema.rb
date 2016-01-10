@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110083449) do
+ActiveRecord::Schema.define(version: 20160110083613) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -36,5 +36,18 @@ ActiveRecord::Schema.define(version: 20160110083449) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "winners", force: :cascade do |t|
+    t.integer  "store_id",   limit: 4
+    t.integer  "lottery_id", limit: 4
+    t.integer  "method",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "winners", ["lottery_id"], name: "index_winners_on_lottery_id", using: :btree
+  add_index "winners", ["store_id"], name: "index_winners_on_store_id", using: :btree
+
   add_foreign_key "lotteries", "categories"
+  add_foreign_key "winners", "lotteries"
+  add_foreign_key "winners", "stores"
 end
