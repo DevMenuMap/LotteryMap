@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110155514) do
+ActiveRecord::Schema.define(version: 20160110161014) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20160110155514) do
   create_table "rank_nums", force: :cascade do |t|
     t.integer  "rank_id",    limit: 4
     t.integer  "num",        limit: 4
-    t.boolean  "special",    limit: 1
+    t.boolean  "special",    limit: 1, default: false
     t.integer  "order",      limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "rank_nums", ["rank_id"], name: "index_rank_nums_on_rank_id", using: :btree
