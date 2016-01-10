@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rank_id: 
+  num: 1
+  special: false
+  order: 1
+
+two:
+  rank_id: 
+  num: 1
+  special: false
+  order: 1

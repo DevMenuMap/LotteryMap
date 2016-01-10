@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lottery_id: 
+  rank: 1
+  total_winners: 1
+  winning: 
+
+two:
+  lottery_id: 
+  rank: 1
+  total_winners: 1
+  winning: 
