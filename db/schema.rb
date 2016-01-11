@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 20160110161014) do
   create_table "lotteries", force: :cascade do |t|
     t.integer  "category_id", limit: 4
     t.integer  "round",       limit: 4
+    t.integer  "total_sales", limit: 8
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.integer  "total_sales", limit: 8
     t.datetime "date"
   end
 
@@ -63,18 +63,18 @@ ActiveRecord::Schema.define(version: 20160110161014) do
 
   create_table "winners", force: :cascade do |t|
     t.integer  "store_id",   limit: 4
-    t.integer  "lottery_id", limit: 4
+    t.integer  "rank_id",    limit: 4
     t.integer  "method",     limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
-  add_index "winners", ["lottery_id"], name: "index_winners_on_lottery_id", using: :btree
+  add_index "winners", ["rank_id"], name: "index_winners_on_rank_id", using: :btree
   add_index "winners", ["store_id"], name: "index_winners_on_store_id", using: :btree
 
   add_foreign_key "lotteries", "categories"
   add_foreign_key "rank_nums", "ranks"
   add_foreign_key "ranks", "lotteries"
-  add_foreign_key "winners", "lotteries"
+  add_foreign_key "winners", "ranks"
   add_foreign_key "winners", "stores"
 end
