@@ -1,2 +1,13 @@
-<h1>Stores#show</h1>
-<p>Find me in app/views/stores/show.html.erb</p>
+<div class="container">
+	<div id="naver_map"></div>
+	<%= @store.name %>
+	<%= @store.addr %>
+</div>
+
+<script>
+	<% if @store.have_latlng? %>
+		loadNaverMap(8)
+	<% else %>
+		loadNaverMap()
+	<% end %>
+</script>

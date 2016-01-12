@@ -3,6 +3,13 @@ class StoresController < ApplicationController
   end
 
   def show
+		@stores = Store.where(id: params[:id])
+		@store = @stores.first
+
+		respond_to do |format|
+			format.html
+			format.json { render layout: false }
+		end
   end
 
   def new

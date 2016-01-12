@@ -13,4 +13,9 @@ class Store < ActiveRecord::Base
 	def self.without_latlng
 		where("lat IS NULL OR lng IS NULL")
 	end
+
+	# Instance methods
+	def have_latlng?
+		!(lat.nil? || lng.nil? || lat == 0 || lng == 0)
+	end
 end
