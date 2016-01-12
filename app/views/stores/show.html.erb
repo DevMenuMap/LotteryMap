@@ -1,7 +1,8 @@
 <div class="container">
-	<div id="naver_map"></div>
 	<%= @store.name %>
-	<%= @store.addr %>
+	<div id="naver_map"></div>
+	<p><%= @store.addr %></p>
+	<p><%= @store.rank.lottery.name %> <%= @store.rank.round_in_ko %> <%= @store.rank.rank_in_ko %></p>
 
 	<div id="news"></div>
 </div>

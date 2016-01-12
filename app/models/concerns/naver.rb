@@ -58,8 +58,7 @@ module Naver
 
 	# Return array of search result
 	def search_naver(category = 'news')
-		# query = name + " " + addr
-		query = '로또 682회 당첨 서울'
+		query = search_query
 		query = URI.encode("#{query}")
 
 		naver_key = "key=" + SEARCH_KEY

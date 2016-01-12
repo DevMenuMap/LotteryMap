@@ -9,8 +9,7 @@ module Daum
 
 	### Instance methods
 	def daum_blog_search
-		# query = short_addrs + " " + short_name
-		# query = 'lotto'
+		query = search_query
 		query = URI.encode("#{query}")
 
 		daum_key = "?apikey=" + JS_KEY
