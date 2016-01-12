@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>LotteryMap</title>
+	<head>
+		<title>LotteryMap</title>
 
-	<%= render 'layouts/shim' %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+		<%= render 'layouts/shim' %>
 
-	<%= yield %>
+ 		<!-- API loading -->
+		<%= javascript_include_tag "http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=#{Naver::MAP_KEY}" %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag '//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js' %>
+		
+		<!-- Bootstrap -->
+		<%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css' %>
+		<%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css' %>
+		<%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js' %>
 
-	<script>
-		ga('send', 'pageview', '<%= request.path %>');
-	</script>
-</body>
+		<!-- Font Awesome for Bootstrap -->
+		<%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' %>
+
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+		<%= favicon_link_tag 'favicon.ico' %>
+	</head>
+	<body>
+		<%= render 'layouts/header' %>
+
+		<%= yield %>
+
+		<script>
+			ga('send', 'pageview', '<%= request.path %>');
+		</script>
+	</body>
 </html>
