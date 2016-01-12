@@ -5,7 +5,8 @@ module Naver
 	### Constants
 	# API keys
 	if Rails.env.development?
-		MAP_KEY = 'b479fb2352534a9ee7313a9938cda773'
+		# MAP_KEY = 'b479fb2352534a9ee7313a9938cda773'
+		MAP_KEY = '0fa2e38c14674111754e3fa223c439b7'
 	elsif Rails.env.production?
 		MAP_KEY = 'd3f2b047b63329ff39b104ae26860909'
 	end
@@ -56,15 +57,13 @@ module Naver
 	end
 
 	# Return array of search result
-	def naver_blog_search
-		query = short_name + " " + short_addrs
-		FILTER_RULES.each do |rule|
-			query += " -" + rule
-		end
+	def search_naver(category = 'news')
+		# query = name + " " + addr
+		query = '로또 682회 당첨 서울'
 		query = URI.encode("#{query}")
 
 		naver_key = "key=" + SEARCH_KEY
-		naver_options = "&query=#{query}&display=5&target=blog&sort=sim"
+		naver_options = "&query=#{query}&display=5&target=#{category}&sort=sim"
 		naver_url = "http://openapi.naver.com/search?#{naver_key}#{naver_options}"
 
 		items = Nokogiri::XML(open(naver_url)).xpath("//item")
@@ -73,10 +72,9 @@ module Naver
 		items.each do |item|
 			temp = Hash.new
 			temp[:title] = item.xpath("title").text 
-			temp[:link]  = item.xpath("link").text
+			temp[:link]  = item.xpath("originallink").text
 			temp[:description]  = item.xpath("description").text
-			temp[:blogger_name] = item.xpath("bloggername").text
-			temp[:blogger_link] = item.xpath("bloggerlink").text
+			temp[:pub_date] = item.xpath("pubDate").text
 			naver_blogs << temp
 		end
 

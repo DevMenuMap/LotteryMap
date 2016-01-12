@@ -1,6 +1,7 @@
 class Store < ActiveRecord::Base
 	# Mixins
 	include Naver
+	include Daum
 	
 	# Class methods
 	def self.save_latlng
