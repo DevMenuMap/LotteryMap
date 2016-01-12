@@ -1,2 +1,29 @@
 class StoresController < ApplicationController
+  def index
+  end
+
+  def show
+		@stores = Store.where(id: params[:id])
+		@store = @stores.first
+
+		respond_to do |format|
+			format.html
+			format.json { render layout: false }
+		end
+  end
+
+  def new
+  end
+
+  def create
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
 end

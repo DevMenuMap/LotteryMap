@@ -1,0 +1,25 @@
+<div class="container">
+	<%= @store.name %>
+	<div id="naver_map"></div>
+	<p><%= @store.addr %></p>
+	<p><%= @store.rank.lottery.name %> <%= @store.rank.round_in_ko %> <%= @store.rank.rank_in_ko %></p>
+
+	<div id="news"></div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		// map
+		<% if @store.have_latlng? %>
+			loadNaverMap(8)
+		<% else %>
+			loadNaverMap()
+		<% end %>
+
+		// news
+		$.ajax({
+			url: '<%= news_path %>',
+			data: { id: <%= @store.id %> }
+		});
+	});
+</script>
