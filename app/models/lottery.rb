@@ -4,10 +4,10 @@ class Lottery < ActiveRecord::Base
 	has_many :ranks
 
 	# Instance methods
-	def name
+	def name(short = true)
 		case category_id
 		when 1
-		'로또'
+			short ? '로또' : '로또(Lotto)'
 		when 2 
 		'연금복권'
 		when 3 
@@ -17,5 +17,10 @@ class Lottery < ActiveRecord::Base
 		when 5 
 		'스피또2000'
 		end 
+	end
+
+	def date_in_ko
+		d = date
+		d.year.to_s + '년 ' + d.month.to_s + '월 ' + d.day.to_s + '일'
 	end
 end

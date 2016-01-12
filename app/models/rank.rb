@@ -1,4 +1,7 @@
 class Rank < ActiveRecord::Base
+	# mixins
+	include ActionView::Helpers::NumberHelper
+
 	# Associations
   belongs_to :lottery
 	has_many :rank_nums
@@ -12,5 +15,9 @@ class Rank < ActiveRecord::Base
 
 	def rank_in_ko
 		rank.to_s + '등'
+	end
+
+	def ko_won
+		number_with_delimiter(winning) + '원'
 	end
 end

@@ -32,4 +32,8 @@ class Store < ActiveRecord::Base
 	def search_query
 		[rank.lottery.name, rank.round_in_ko, rank.rank_in_ko, '당첨'].join(' ')
 	end
+
+	def short_addr
+		addr.split[0..2].join(' ')
+	end
 end
