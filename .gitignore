@@ -15,3 +15,9 @@
 
 # db
 /db/seed_data/*
+
+# precompiled assets
+/public/assets/*.js
+/public/assets/*.css
+/public/assets/*.json
+/public/assets/*.gz

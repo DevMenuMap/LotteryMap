@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
+
   root 'home#index'
 
 	resources :stores
 
+	get 'crawlers/google', default: { format: 'xml' }
   get 'portals/:id/news' => 'portals#news', as: :news
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
 
   # Example resource route with options:
   #   resources :products do
