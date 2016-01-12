@@ -10,7 +10,10 @@
 </head>
 <body>
 
-<%= yield %>
+	<%= yield %>
 
+	<script>
+		ga('send', 'pageview', '<%= request.path %>');
+	</script>
 </body>
 </html>
