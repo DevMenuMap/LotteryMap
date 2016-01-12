@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110084925) do
+ActiveRecord::Schema.define(version: 20160110161014) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(version: 20160110084925) do
   create_table "lotteries", force: :cascade do |t|
     t.integer  "category_id", limit: 4
     t.integer  "round",       limit: 4
+    t.integer  "total_sales", limit: 8
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.integer  "total_sales", limit: 8
+    t.datetime "date"
   end
 
   add_index "lotteries", ["category_id"], name: "index_lotteries_on_category_id", using: :btree
@@ -32,10 +33,10 @@ ActiveRecord::Schema.define(version: 20160110084925) do
   create_table "rank_nums", force: :cascade do |t|
     t.integer  "rank_id",    limit: 4
     t.integer  "num",        limit: 4
-    t.boolean  "special",    limit: 1
+    t.boolean  "special",    limit: 1, default: false
     t.integer  "order",      limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "rank_nums", ["rank_id"], name: "index_rank_nums_on_rank_id", using: :btree
@@ -53,25 +54,27 @@ ActiveRecord::Schema.define(version: 20160110084925) do
 
   create_table "stores", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.string   "addresss",   limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "addr",       limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.decimal  "lat",                    precision: 11, scale: 8
+    t.decimal  "lng",                    precision: 11, scale: 8
   end
 
   create_table "winners", force: :cascade do |t|
     t.integer  "store_id",   limit: 4
-    t.integer  "lottery_id", limit: 4
+    t.integer  "rank_id",    limit: 4
     t.integer  "method",     limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
-  add_index "winners", ["lottery_id"], name: "index_winners_on_lottery_id", using: :btree
+  add_index "winners", ["rank_id"], name: "index_winners_on_rank_id", using: :btree
   add_index "winners", ["store_id"], name: "index_winners_on_store_id", using: :btree
 
   add_foreign_key "lotteries", "categories"
   add_foreign_key "rank_nums", "ranks"
   add_foreign_key "ranks", "lotteries"
-  add_foreign_key "winners", "lotteries"
+  add_foreign_key "winners", "ranks"
   add_foreign_key "winners", "stores"
 end
