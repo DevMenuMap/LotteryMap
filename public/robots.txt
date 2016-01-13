@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-SITEMAP: http://lotterymap.co.kr/crawlers/google.xml
+SITEMAP: http://lotterymap.co.kr/sitemap.xml

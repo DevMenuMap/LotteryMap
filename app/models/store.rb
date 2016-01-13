@@ -19,6 +19,10 @@ class Store < ActiveRecord::Base
 		where("lat IS NULL OR lng IS NULL")
 	end
 
+	def self.last_updated_at
+		limit(1).order(updated_at: :desc).pluck(:updated_at)[0]
+	end
+
 	# Instance methods
 	def rank
 		ranks.first

@@ -9,4 +9,12 @@ class CrawlersController < ApplicationController
 			format.xml
 		end
   end
+
+	def naver
+		@stores = Store.all.limit(100)
+
+		respond_to do |format|
+			format.atom
+		end
+	end
 end
