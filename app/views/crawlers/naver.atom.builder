@@ -1,4 +1,4 @@
-naver_atom_feed({ xmlns: "http://webmstertool.naver.com",
+naver_atom_feed({ xmlns: "http://webmastertool.naver.com",
 									id: 'http://lotterymap.co.kr'}) do |feed|
 	feed.title(basic_meta_title)
 	feed.author do |a|

@@ -1,4 +1,4 @@
-namespace :crawler do
+namespace :crawlers do
   desc "send ping to naver"
   task :naver_ping, [:start] => :environment do |t, args|
 		args.with_default(start: nil)

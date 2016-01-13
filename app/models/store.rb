@@ -18,7 +18,7 @@ class Store < ActiveRecord::Base
 	end
 
 	def self.without_latlng
-		where("lat IS NULL OR lng IS NULL")
+		where("lat IS NULL OR lng IS NULL OR lat = 0 OR lng = 0")
 	end
 
 	def self.last_updated_at

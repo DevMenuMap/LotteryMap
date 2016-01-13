@@ -3,7 +3,7 @@ class CrawlersController < ApplicationController
 
   def google
 		@url = 'http://lotterymap.co.kr/'
-		@stores = Store.all
+		@stores = Store.where("updated_at > NOW() - INTERVAL 7 DAY")
 
 		respond_to do |format|
 			format.xml

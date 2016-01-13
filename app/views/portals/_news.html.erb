@@ -1,6 +1,6 @@
 <p>관련 기사</p>
 <% @naver_news.each do |news| %>
-	<%= link_to news[:original_link] do %>
+	<%= link_to news[:link], target: "_blank" do %>
 		<p><%= news[:title].html_safe %></p>
 		<p><%= news_pub_date(news[:pub_date]) %></p>
 		<p><%= news[:description].html_safe %></p>
