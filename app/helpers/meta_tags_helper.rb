@@ -25,7 +25,7 @@ module MetaTagsHelper
 		desc += rank.rank_in_ko + ' 당첨자를 배출해낸 행운의 '
 		desc += lottery.name + '명당입니다. '
 		desc += rank.rank_in_ko + ' 당첨금액: '
-		desc += rank.ko_won + ', 추첨일: '
+		desc += rank.winning_in_won + ', 추첨일: '
 		desc += lottery.date_in_ko + ', 판매점 주소: '
 		desc += store.addr
 	end

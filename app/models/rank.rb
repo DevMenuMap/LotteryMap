@@ -17,7 +17,7 @@ class Rank < ActiveRecord::Base
 		rank.to_s + '등'
 	end
 
-	def ko_won
+	def winning_in_won
 		number_with_delimiter(winning) + '원'
 	end
 end

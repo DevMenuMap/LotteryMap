@@ -1,4 +1,7 @@
 class Lottery < ActiveRecord::Base
+	# mixins
+	include ActionView::Helpers::NumberHelper
+
 	# Associations
   belongs_to :category
 	has_many :ranks
@@ -19,8 +22,19 @@ class Lottery < ActiveRecord::Base
 		end 
 	end
 
+	def sales_in_won
+		number_with_delimiter(total_sales) + '원'
+	end
+
+	def date_exists?
+		!(date.nil? || date == 0)
+	end
+
 	def date_in_ko
-		d = date
-		d.year.to_s + '년 ' + d.month.to_s + '월 ' + d.day.to_s + '일'
+		date.year.to_s + '년 ' + date.month.to_s + '월 ' + date.day.to_s + '일'
+	end
+
+	def is_lotto?
+		category_id == 1
 	end
 end

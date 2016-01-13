@@ -5,6 +5,8 @@ class StoresController < ApplicationController
   def show
 		@stores = Store.where(id: params[:id])
 		@store = @stores.first
+		@rank = @store.rank
+		@lottery = @rank.lottery
 
 		respond_to do |format|
 			format.html
