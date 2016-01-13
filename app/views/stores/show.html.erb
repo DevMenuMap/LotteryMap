@@ -1,9 +1,28 @@
 <div class="container">
+	<!-- store -->
 	<%= @store.name %>
 	<div id="naver_map"></div>
-	<p><%= @store.addr %></p>
-	<p><%= @store.rank.lottery.name %> <%= @store.rank.round_in_ko %> <%= @store.rank.rank_in_ko %></p>
+	<p>위치: <%= @store.addr %></p>
+	<p>
+		<%= @lottery.name(false) %> 
+		<%= @rank.round_in_ko %> 
+		<%= @rank.rank_in_ko %> 당첨!
+	</p>
+	<% if @lottery.date_exists? %>
+		<p><%= @lottery.date_in_ko %></p>
+	<% end %>
+	<p>금액: <%= @rank.winning_in_won %></p>
 
+	<!-- lottery -->
+	<% if @lottery.is_lotto? %>
+		<%= render 'lotto' %>
+	<% elsif @lottery.is_pension? %>	
+		<%= render 'pension' %>
+	<% else %>
+		<%= render 'speeto' %>
+	<% end %>
+
+	<!-- news -->
 	<div id="news"></div>
 </div>
 
