@@ -1,10 +1,55 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 
+/* variables */
+$gold: #daa520;
+
 html, body, h1, h2, h3, h4, h5, h6, p, a, input, textarea, button {
 	font-family: 'Noto Sans Korean', sans-serif;
 }
 
-.navbar-brand {
+html, body {
+	height: 100%;
+}
+
+.navbar {
+	border-bottom: 0;
+	margin-bottom: 0;
+}
+
+.navbar-default .navbar-brand {
+	font-size: 1.8em;
+	font-weight: bold;
+	@extend .gold;
+}
+
+.gold {
 	font-family: 'Ubuntu';
 	font-weight: bold;
+	color: $gold;
+}
+
+.ubuntu {
+	font-family: 'Ubuntu';
+}
+
+#home {
+	height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("/images/money.jpg") center center fixed; 
+	color: white;
+	text-align: center;	
+	h1 {
+		margin: 1em 0 .3em;
+		font-size: 4em;
+	}
+}
+
+@media (min-width: 992px) {
+	#home {
+		h1 {
+			font-size: 10em;
+		}
+		p {
+			font-size: 2em;
+		}
+	}
 }
