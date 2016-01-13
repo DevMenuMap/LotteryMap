@@ -1,3 +1,5 @@
+require 'net/http'
+
 class Store < ActiveRecord::Base
 	# Mixins
 	include Naver
@@ -21,6 +23,30 @@ class Store < ActiveRecord::Base
 
 	def self.last_updated_at
 		limit(1).order(updated_at: :desc).pluck(:updated_at)[0]
+	end
+
+	def self.ping(offset)
+		header = {
+			"User-agent" => "request",
+			"Host" => "apis.naver.com",
+			"Progma" => "no-cache",
+			"Content-type" => "application/x-www-form-urlencoded",
+			"Accept" => "*/*",
+			"Authorization" => "Bearer " + Naver::SYNDICATION_KEY
+		}
+
+		uri = URI.parse('https://apis.naver.com/crawl/nsyndi/v2')
+
+		http = Net::HTTP.new(uri.host, uri.port)
+		http.use_ssl = true
+
+		atom_url = 'http://lotterymap.co.kr/sitemap.atom?offset=' + offset.to_s
+
+		args = { ping_url: atom_url }
+		uri.query = URI.encode_www_form(args)
+
+		request = Net::HTTP::Post.new(uri.request_uri, header)
+		puts http.request(request)
 	end
 
 	# Instance methods

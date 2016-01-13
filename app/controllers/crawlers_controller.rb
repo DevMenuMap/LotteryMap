@@ -11,7 +11,7 @@ class CrawlersController < ApplicationController
   end
 
 	def naver
-		@stores = Store.all.limit(100)
+  	@stores = Store.limit(100).offset(params[:offset].to_i)
 
 		respond_to do |format|
 			format.atom
