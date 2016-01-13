@@ -23,19 +23,19 @@ module Naver
 
 	### Instance methods
 	# Return array of latitude, longitude 
-	def get_latlng
-		url = naver_request_url
+	def get_latlng(addr)
+		url = naver_request_url(addr)
 		xml_page = encode_and_open_xml(url)
 		xml_page.remove_namespaces!			# Remove "xmlns:" part.
 		xml_finder(xml_page)
 	end
 
-	def naver_request_url(options=["utf-8", "latlng"])
+	def naver_request_url(addr, options=["utf-8", "latlng"])
 		request_url = "http://openapi.map.naver.com/api/geocode.php"
 		request_url += "?key=" 			+ MAP_KEY +
 									 "&encoding=" + options[0] +
 									 "&coord=" 		+ options[1] +
-									 "&query=" 		+ self.addr
+									 "&query=" 		+ addr
 	end
 
 	def encode_and_open_xml(url)

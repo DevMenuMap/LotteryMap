@@ -12,8 +12,13 @@ class Store < ActiveRecord::Base
 	# Class methods
 	def self.save_latlng
 		self.without_latlng.each do |r|
-			latlng = r.get_latlng
-			r.update(lat: latlng[0], lng: latlng[1])
+			addr = r.addr
+			loop do
+				latlng = r.get_latlng(addr)
+				r.update(lat: latlng[0], lng: latlng[1])
+				break if (r.have_latlng? || addr == '')
+				addr = addr.split(' ')[0...-1].join(' ') # except addr last element
+			end
 		end
 	end
 
