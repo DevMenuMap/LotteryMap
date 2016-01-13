@@ -3,7 +3,7 @@ class CrawlersController < ApplicationController
 
   def google
 		@url = 'http://lotterymap.co.kr/'
-		@stores = Store.all.limit(10)
+		@stores = Store.all
 
 		respond_to do |format|
 			format.xml
