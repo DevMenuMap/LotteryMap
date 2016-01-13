@@ -18,7 +18,7 @@ class Store < ActiveRecord::Base
 	end
 
 	def self.without_latlng
-		where("lat IS NULL OR lng IS NULL OR lat = 0 OR lng = 0")
+		where("not (lat >= 33.03 AND lat <= 38.63 AND lng >= 125.12 AND lng <= 131.27)")
 	end
 
 	def self.last_updated_at
@@ -55,7 +55,7 @@ class Store < ActiveRecord::Base
 	end
 
 	def have_latlng?
-		!(lat.nil? || lng.nil? || lat == 0 || lng == 0)
+		lat.between?(33.03, 38.63) && lng.between?(125.12, 131.27)
 	end
 
 	# use with naver, daum search API
