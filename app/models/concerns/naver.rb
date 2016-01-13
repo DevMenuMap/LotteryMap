@@ -8,9 +8,10 @@ module Naver
 		# MAP_KEY = 'b479fb2352534a9ee7313a9938cda773'
 		MAP_KEY = '0fa2e38c14674111754e3fa223c439b7'
 	elsif Rails.env.production?
-		MAP_KEY = 'd3f2b047b63329ff39b104ae26860909'
+		MAP_KEY = '13d6b502dd6de2a19c6fdaee4f4523e7'
 	end
 	SEARCH_KEY = '6261e1982f17300eef58a9c8421b0d7d'
+	SYNDICATION_KEY = 'AAAAOivRRTX1jtwh0delpMHIip9Bp9VNfl8qvcnXlUawW+TOrA/LIOQjUWcWsewxmhF3jTueCOpdqG7ui/CqzQb2Gig='
 
 	# filters
 	FILTER_RULES = [] 

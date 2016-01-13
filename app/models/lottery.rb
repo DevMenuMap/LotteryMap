@@ -1,13 +1,16 @@
 class Lottery < ActiveRecord::Base
+	# mixins
+	include ActionView::Helpers::NumberHelper
+
 	# Associations
   belongs_to :category
 	has_many :ranks
 
 	# Instance methods
-	def name
+	def name(short = true)
 		case category_id
 		when 1
-		'로또'
+			short ? '로또' : '로또(Lotto)'
 		when 2 
 		'연금복권'
 		when 3 
@@ -17,5 +20,29 @@ class Lottery < ActiveRecord::Base
 		when 5 
 		'스피또2000'
 		end 
+	end
+
+	def sales_in_won
+		number_with_delimiter(total_sales) + '원'
+	end
+
+	def date_exists?
+		!(date.nil? || date == 0)
+	end
+
+	def date_in_ko
+		date.year.to_s + '년 ' + date.month.to_s + '월 ' + date.day.to_s + '일'
+	end
+
+	def is_lotto?
+		category_id == 1
+	end
+
+	def is_pension?
+		category_id == 2
+	end
+
+	def rank(n)
+		ranks.where(rank: n)
 	end
 end

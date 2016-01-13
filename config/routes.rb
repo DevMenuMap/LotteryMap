@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
+	# sitemap
+	get 'sitemap.xml'  => 'crawlers#google', defaults: { format: 'xml' }
+	get 'sitemap.atom' => 'crawlers#naver',  defaults: { format: 'atom' }
+
+	# home
   root 'home#index'
 
 	resources :stores
 
   get 'portals/:id/news' => 'portals#news', as: :news
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
 
   # Example resource route with options:
   #   resources :products do
