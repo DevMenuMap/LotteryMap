@@ -1,0 +1,22 @@
+<p><%= @lottery.name %> <%= @rank.round_in_ko %></p>
+<p>총 판매액: <%= @lottery.sales_in_won %></p>
+
+<p>
+	당첨번호: 
+	<% @rank.rank_nums.each do |number| %>
+		<% if number.special %>
+			보너스 번호 <%= number.num %>
+		<% else %>
+			<%= number.num %>
+		<% end %>
+	<% end %>
+</p>
+
+<% @ranks.each do |rank| %>
+	<p>
+		<%= rank.rank %>등 당첨자수: <%= rank.winners_in_ko %>
+		당첨금액: <%= rank.winning_in_won %>
+		당첨총액: <%= rank.total_winning_in_won %>
+	</p>
+<% end %>
+

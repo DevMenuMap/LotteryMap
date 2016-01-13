@@ -37,4 +37,12 @@ class Lottery < ActiveRecord::Base
 	def is_lotto?
 		category_id == 1
 	end
+
+	def is_pension?
+		category_id == 2
+	end
+
+	def rank(n)
+		ranks.where(rank: n)
+	end
 end

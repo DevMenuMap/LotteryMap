@@ -14,13 +14,13 @@
 	<p>금액: <%= @rank.winning_in_won %></p>
 
 	<!-- lottery -->
-	<p>
-		<%= @lottery.name %> <%= @rank.round_in_ko %>
-		<% if @lottery.is_lotto? %>
-			총 판매액: <%= @lottery.sales_in_won %>
-		<% end %>
-	</p>
-	<p>n등 당첨번호</p>
+	<% if @lottery.is_lotto? %>
+		<%= render 'lotto' %>
+	<% elsif @lottery.is_pension? %>	
+		<%= render 'pension' %>
+	<% else %>
+		<%= render 'speeto' %>
+	<% end %>
 
 	<!-- news -->
 	<div id="news"></div>

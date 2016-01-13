@@ -1,0 +1,31 @@
+<p><%= @lottery.name %> <%= @rank.round_in_ko %></p>
+
+<% 1.upto(7).each do |n| %>
+	<% @ranks.where(rank: n).each_with_index do |rank, index| %>
+		<p>
+			<% if index == 0 %>
+				<%= rank.rank %>등 
+			<% else %>
+				<!-- blank -->
+			<% end %>
+
+			당첨자수: <%= rank.winners_in_ko %>
+			당첨금액: <%= rank.winning_in_won %>
+			<% if rank.rank < 3 %>
+				<% rank.rank_nums.each do |number| %>
+					<% if number.special %>
+						<%= number.num %>조
+					<% else %>
+						<%= number.num %>
+					<% end %>
+				<% end %>
+			<% else %>
+				각조
+				<% rank.rank_nums.each do |number| %>
+					<%= number.num %>
+				<% end %>
+			<% end %>
+		</p>
+	<% end %>
+<% end %>
+		

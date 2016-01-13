@@ -7,6 +7,7 @@ class StoresController < ApplicationController
 		@store = @stores.first
 		@rank = @store.rank
 		@lottery = @rank.lottery
+		@ranks = @lottery.ranks
 
 		respond_to do |format|
 			format.html
