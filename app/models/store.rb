@@ -23,7 +23,7 @@ class Store < ActiveRecord::Base
 	end
 
 	def self.without_latlng
-		where("not (lat >= 33.03 AND lat <= 38.63 AND lng >= 125.12 AND lng <= 131.27)")
+		where("NOT (lat >= #{KOREA_LAT_RANGE[:min]} AND lat <= #{KOREA_LAT_RANGE[:max]} AND lng >= #{KOREA_LNG_RANGE[:min]} AND lng <= #{KOREA_LNG_RANGE[:max]})")
 	end
 
 	def self.last_updated_at
@@ -60,7 +60,7 @@ class Store < ActiveRecord::Base
 	end
 
 	def have_latlng?
-		lat.between?(33.03, 38.63) && lng.between?(125.12, 131.27)
+		lat.between?(KOREA_LAT_RANGE[:min], KOREA_LAT_RANGE[:max]) && lng.between?(KOREA_LNG_RANGE[:min], KOREA_LNG_RANGE[:max])
 	end
 
 	# use with naver, daum search API
