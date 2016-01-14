@@ -1,5 +1,3 @@
-<p><%= @lottery.name %> <%= @rank.round_in_ko %></p>
-
 <% 1.upto(7).each do |n| %>
 	<% @ranks.where(rank: n).each_with_index do |rank, index| %>
 		<p>

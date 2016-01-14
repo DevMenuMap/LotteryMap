@@ -4,6 +4,19 @@ $red: red;
 $link-blue: #5890ff;
 $link-dark-blue: #387ab5;
 
+// lottery name colors
+$lottery-blue: #004ea2;
+$lottery-green: #90c31f;
+$lotto-sky-blue: #00a0d2;
+$speeto-orange: #f97117;
+
+// lotto ball colors
+$yellow-ball: #fcb220;
+$blue-ball: rgba(0, 102, 255, 0.92);
+$red-ball: #ff250d;
+$black-ball: #555;
+$green-ball: #5bde22;
+
 a {
 	color: $link-blue;
 	&:focus, &:hover {
@@ -63,6 +76,30 @@ h2.winning {
 	}
 	.addr {
 		margin-right: 20px;
+	}
+}
+
+.ball {
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	text-align: center;
+	color: white;
+	&.yellow {
+		background-color: $yellow-ball;
+	}
+	&.blue {
+		background-color: $blue-ball;
+	}
+	&.red {
+		background-color: $red-ball;
+	}
+	&.black {
+		background-color: $black-ball;
+	}
+	&.green {
+		background-color: $green-ball;
 	}
 }
 
