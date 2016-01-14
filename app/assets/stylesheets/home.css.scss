@@ -46,7 +46,7 @@ html, body {
 }
 
 .gold {
-	font-family: 'Ubuntu';
+	font-family: 'Ubuntu', 'Noto Sans Korean';
 	font-weight: bold;
 	color: $gold;
 	&:hover, &:focus {
@@ -56,7 +56,7 @@ html, body {
 }
 
 .ubuntu {
-	font-family: 'Ubuntu';
+	font-family: 'Ubuntu', 'Noto Sans Korean';
 }
 
 #home {

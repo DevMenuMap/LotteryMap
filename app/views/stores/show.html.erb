@@ -1,18 +1,22 @@
 <div class="container">
 	<div class="col-md-6 col-md-offset-3">
 		<!-- store -->
-		<%= @store.name %>
+		<div style="margin: 0 -20px; text-align: center;">
+			<h1 class="win">
+				<%= @lottery.name(false) %> 
+				<span class="gold"><%= @rank.round_in_ko %></span>
+				<span class="red"><%= @rank.rank_in_ko %></span>
+				당첨점
+			</h1>
+			<% if @lottery.date_exists? %>
+				<p class="win_date">(<%= @lottery.date_in_ko %> 추첨)</p>
+			<% end %>
+			<h2 class="winning"><span class="gold">&#8361; <%= @rank.winning_in_won %><span></h2>
+		</div>
+
+		<!-- map -->
 		<div id="naver_map"></div>
-		<p>위치: <%= @store.addr %></p>
-		<p>
-			<%= @lottery.name(false) %> 
-			<%= @rank.round_in_ko %> 
-			<%= @rank.rank_in_ko %> 당첨!
-		</p>
-		<% if @lottery.date_exists? %>
-			<p><%= @lottery.date_in_ko %></p>
-		<% end %>
-		<p>금액: <%= @rank.winning_in_won %></p>
+		<p class="addr">(위치: <%= @store.addr %>)</p>
 
 		<!-- lottery -->
 		<% if @lottery.is_lotto? %>

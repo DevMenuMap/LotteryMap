@@ -1,11 +1,58 @@
 $desktop-width: 992px;
+$grey-font: #999;
+$red: red;
+
+.red {
+	color: $red;
+	font-family: 'Ubuntu', 'Noto Sans Korean';
+	font-weight: bold;
+}
+
+h1.win {
+	font-size: 1.8em;
+}
+
+.win_date {
+	margin-top: -10px;
+	text-align: right;
+	font-size: .7em;
+	color: $grey-font;
+}
+
+h2.winning {
+	margin-top: 10px;
+	font-size: 1.6em;
+}
+
+@media (min-width: $desktop-width) {
+	h1.win {
+		font-weight: 400;
+		font-size: 2.5em;
+	}
+	.win_date {
+		margin: -10px 20px 10px;
+	}
+	h2.winning {
+		font-size: 2.2em;
+	}
+}
 
 #naver_map {
 	margin-left: -30px;
 }
 
+.addr {
+	margin: 5px -20px 0 0;
+	text-align: right;
+	font-size: .7em;
+	color: $grey-font;
+}
+
 @media (min-width: $desktop-width) {
 	#naver_map {
 		margin-left: 0;
+	}
+	.addr {
+		margin-right: 20px;
 	}
 }
