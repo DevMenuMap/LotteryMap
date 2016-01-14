@@ -2,6 +2,8 @@
 
 /* variables */
 $gold: #daa520;
+$dark-gold: rgba(153, 101, 21, 0.73);
+$desktop-width: 992px;
 
 html, body, h1, h2, h3, h4, h5, h6, p, a, input, textarea, button {
 	font-family: 'Noto Sans Korean', sans-serif;
@@ -14,18 +16,43 @@ html, body {
 .navbar {
 	border-bottom: 0;
 	margin-bottom: 0;
+	.container {
+		padding: 0; 
+		[class^="col-md"] {
+		padding: 0;
+		}
+	}
 }
 
-.navbar-default .navbar-brand {
-	font-size: 1.8em;
-	font-weight: bold;
-	@extend .gold;
+.navbar-default {
+	.navbar-brand {
+		font-size: 1.8em;
+		font-weight: bold;
+		@extend .gold;
+	}
+}
+
+@media (min-width: $desktop-width) {
+	.navbar {
+		min-height: 70px;
+		.container {
+			margin-top: 10px;
+			padding: 0 15px;
+			[class^="col-md"] {
+				padding: 0 15px;
+			}
+		}
+	}
 }
 
 .gold {
 	font-family: 'Ubuntu';
 	font-weight: bold;
 	color: $gold;
+	&:hover, &:focus {
+		color: $dark-gold;
+		outline: none;
+	}	
 }
 
 .ubuntu {
@@ -43,7 +70,7 @@ html, body {
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: $desktop-width) {
 	#home {
 		h1 {
 			font-size: 10em;

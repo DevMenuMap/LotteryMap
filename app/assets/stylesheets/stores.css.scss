@@ -1,0 +1,11 @@
+$desktop-width: 992px;
+
+#naver_map {
+	margin-left: -30px;
+}
+
+@media (min-width: $desktop-width) {
+	#naver_map {
+		margin-left: 0;
+	}
+}
