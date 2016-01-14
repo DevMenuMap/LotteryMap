@@ -17,6 +17,7 @@ class Store < ActiveRecord::Base
 				latlng = r.get_latlng(addr)
 				r.update(lat: latlng[0], lng: latlng[1])
 				break if (r.have_latlng? || addr == '')
+				r.around = true
 				addr = addr.split(' ')[0...-1].join(' ') # except addr last element
 			end
 		end
