@@ -1,6 +1,15 @@
 $desktop-width: 992px;
 $grey-font: #999;
 $red: red;
+$link-blue: #5890ff;
+$link-dark-blue: #387ab5;
+
+a {
+	color: $link-blue;
+	&:focus, &:hover {
+		text-decoration: none;
+	}
+}
 
 .red {
 	color: $red;
@@ -56,3 +65,19 @@ h2.winning {
 		margin-right: 20px;
 	}
 }
+
+#news {
+	margin: 10px -15px 30px;
+	padding-top: 15px;
+	border-top: 5px solid $grey-font;
+	.date {
+		margin: -10px 10px 5px 0;
+		color: $grey-font;
+		font-size: .8em;
+		text-align: right;
+	}
+	.content {
+		color: initial;
+	}
+}
+

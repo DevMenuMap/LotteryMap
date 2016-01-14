@@ -19,7 +19,7 @@ class Rank < ActiveRecord::Base
 
 	def winning_in_won
 		if is_pension? && rank == 1
-			"20년 매월 500만원"
+			"20년 매월 &#8361; 500만원".html_safe
 		elsif winning >= 10**7
 			number_with_delimiter(winning) + '원(' + winning_in_ko + ')'
 		else
