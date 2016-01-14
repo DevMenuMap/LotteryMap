@@ -116,7 +116,7 @@ function setMapLevel(data) {
 	} else if ( lat_range > 0.01  || lng_range > 0.005 ) {
 	  level = 10;
 	} else {
-	  level = 11;
+	  level = 9;
 	};
 	
 	oMap.setLevel(level);

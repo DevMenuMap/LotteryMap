@@ -41,7 +41,7 @@ h1.win {
 	color: $grey-font;
 }
 
-h2.winning, h2.total_sales {
+h2.winning {
 	margin-top: 10px;
 	font-size: 1.6em;
 }
@@ -54,7 +54,7 @@ h2.winning, h2.total_sales {
 	.win_date {
 		margin: -10px 20px 10px;
 	}
-	h2.winning, h2.total_sales {
+	h2.winning {
 		font-size: 2.6em;
 	}
 }
@@ -122,6 +122,38 @@ h2.winning, h2.total_sales {
 h2.total_sales {
 	text-align: center;
 	margin: 0 -20px;	
+	font-size: 1.8em;
+}
+
+@media (min-width: $desktop-width) {
+	h2.total_sales {
+		font-size: 2.6em;
+	}
+}
+
+table.winners {
+	display: table;
+	width: 100%;
+	th {
+		text-align: center;
+		padding: 3px 0;
+	}
+	td {
+		text-align: center;
+		font-size: .9em;
+		padding: 3px 0;
+	}
+}
+
+@media (min-width: $desktop-width) {
+	table.winners {
+		th {
+			font-size: 1.5em;	
+		}
+		td {
+			font-size: 1.2em;	
+		}
+	}
 }
 
 #news {
