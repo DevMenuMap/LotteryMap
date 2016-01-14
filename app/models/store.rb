@@ -12,13 +12,19 @@ class Store < ActiveRecord::Base
 	# Class methods
 	def self.save_latlng
 		self.without_latlng.each do |r|
-			latlng = r.get_latlng
-			r.update(lat: latlng[0], lng: latlng[1])
+			addr = r.addr
+			loop do
+				latlng = r.get_latlng(addr)
+				r.update(lat: latlng[0], lng: latlng[1])
+				break if (r.have_latlng? || addr == '')
+				r.around = true
+				addr = addr.split(' ')[0...-1].join(' ') # except addr last element
+			end
 		end
 	end
 
 	def self.without_latlng
-		where("lat IS NULL OR lng IS NULL OR lat = 0 OR lng = 0")
+		where("NOT (lat >= #{KOREA_LAT_RANGE[:min]} AND lat <= #{KOREA_LAT_RANGE[:max]} AND lng >= #{KOREA_LNG_RANGE[:min]} AND lng <= #{KOREA_LNG_RANGE[:max]})")
 	end
 
 	def self.last_updated_at
@@ -55,7 +61,7 @@ class Store < ActiveRecord::Base
 	end
 
 	def have_latlng?
-		!(lat.nil? || lng.nil? || lat == 0 || lng == 0)
+		lat.between?(KOREA_LAT_RANGE[:min], KOREA_LAT_RANGE[:max]) && lng.between?(KOREA_LNG_RANGE[:min], KOREA_LNG_RANGE[:max])
 	end
 
 	# use with naver, daum search API
