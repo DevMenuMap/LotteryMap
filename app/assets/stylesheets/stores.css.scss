@@ -41,7 +41,7 @@ h1.win {
 	color: $grey-font;
 }
 
-h2.winning {
+h2.winning, h2.total_sales {
 	margin-top: 10px;
 	font-size: 1.6em;
 }
@@ -54,8 +54,8 @@ h2.winning {
 	.win_date {
 		margin: -10px 20px 10px;
 	}
-	h2.winning {
-		font-size: 2.2em;
+	h2.winning, h2.total_sales {
+		font-size: 2.6em;
 	}
 }
 
@@ -63,7 +63,7 @@ h2.winning {
 	margin-left: -30px;
 }
 
-.addr {
+.addr, .sales_period {
 	margin: 5px -20px 0 0;
 	text-align: right;
 	font-size: .7em;
@@ -74,18 +74,25 @@ h2.winning {
 	#naver_map {
 		margin-left: 0;
 	}
-	.addr {
+	.addr, .sales_period {
 		margin-right: 20px;
 	}
 }
 
+#lotto_numbers {
+	margin: 15px -5px 20px;
+	text-align: center;
+}
+
 .ball {
 	display: inline-block;
-	width: 22px;
-	height: 22px;
+	width: 32px;
+	height: 32px;
 	border-radius: 50%;
+	margin: 0 3px;
 	text-align: center;
 	color: white;
+	font-size: 22px;
 	&.yellow {
 		background-color: $yellow-ball;
 	}
@@ -101,6 +108,20 @@ h2.winning {
 	&.green {
 		background-color: $green-ball;
 	}
+}
+
+@media (min-width: $desktop-width) {
+	.ball {
+		width: 45px;
+		height: 45px;
+		margin: 0 5px;
+		font-size: 29px;
+	}
+}
+
+h2.total_sales {
+	text-align: center;
+	margin: 0 -20px;	
 }
 
 #news {
@@ -129,5 +150,9 @@ h2.winning {
 }
 .speeto_orange {
 	color: $speeto-orange;
+}
+
+.sales_period {
+	margin: 5px -10px;
 }
 

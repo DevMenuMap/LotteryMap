@@ -49,12 +49,14 @@ html, body {
 	font-family: 'Ubuntu', 'Noto Sans Korean';
 	font-weight: bold;
 	color: $gold;
+}
+
+a.gold {
 	&:hover, &:focus {
 		color: $dark-gold;
 		outline: none;
 	}	
 }
-
 .ubuntu {
 	font-family: 'Ubuntu', 'Noto Sans Korean';
 }

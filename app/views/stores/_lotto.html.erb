@@ -1,16 +1,21 @@
-<p>총 판매액: &#8361; <%= @lottery.sales_in_won %></p>
-
-<p>
-	<% @rank.rank_nums.each do |number| %>
+<div id="lotto_numbers">
+	<% @rank.rank_nums.where(special: false).each do |number| %>
 		<%= lotto_ball(number.num) %>
 	<% end %>
-</p>
+	<span class="glyphicon glyphicon-plus"></span>
+	<div class="special" style="display: inline-block;">
+		<%= lotto_ball(@rank.rank_nums.find_by_special(true).num) %>
+	</div>
+</div>
+
+<h2 class="total_sales gold" style="text-align: center;">&#8361; <%= @lottery.sales_in_won %></h2>
+<div class="sales_period">(총 판매액 <%= lotto_sales_period(@lottery) %>)</div>
 
 <% @ranks.each do |rank| %>
-	<p>
+	<div>
 		<%= rank.rank %>등 당첨자수: <%= rank.winners_in_ko %>
 		당첨금액: &#8361; <%= rank.winning_in_won %>
 		당첨총액: &#8361; <%= rank.total_winning_in_won %>
-	</p>
+	</div>
 <% end %>
 

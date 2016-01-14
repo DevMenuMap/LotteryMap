@@ -25,4 +25,8 @@ module LotteryHelper
 		concat content_tag :span, '스피또', class: 'lottery_blue'
 		content_tag :span, "#{n}", class: 'speeto_orange'
 	end
+
+	def lotto_sales_period(lottery)
+		(lottery.date - 1.week).strftime("%Y/%m/%d") + ' ~ ' + lottery.date.strftime("%Y/%m/%d") 
+	end
 end
