@@ -1,13 +1,8 @@
 <p>총 판매액: &#8361; <%= @lottery.sales_in_won %></p>
 
 <p>
-	당첨번호: 
 	<% @rank.rank_nums.each do |number| %>
-		<% if number.special %>
-			보너스 번호 <%= lotto_ball(number.num) %>
-		<% else %>
-			<%= lotto_ball(number.num) %>
-		<% end %>
+		<%= lotto_ball(number.num) %>
 	<% end %>
 </p>
 

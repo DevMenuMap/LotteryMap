@@ -48,6 +48,17 @@ class Lottery < ActiveRecord::Base
 		end
 	end
 
+	def speeto_num
+		case category_id
+		when 3
+			500
+		when 4
+			1000
+		when 5
+			2000
+		end
+	end
+
 	def date_exists?
 		!(date.nil? || date == 0)
 	end
