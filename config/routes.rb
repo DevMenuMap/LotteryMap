@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
 	# home
   root 'home#index'
+	get 'stat' => 'home#stat'
 
 	resources :stores
 
