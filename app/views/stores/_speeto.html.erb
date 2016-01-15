@@ -1,18 +1,28 @@
-<p><%= @lottery.name %> <%= @rank.round_in_ko %></p>
+<div style="margin: 15px -10px;">
+	<table class="winners">
+		<tbody>
+			<tr>
+				<th></th>
+				<th>당첨자</th>
+				<th>당첨금</th>
+				<th>당첨 총액</th>
+			</tr>
 
-<% 1.upto(2).each do |n| %>
-	<% @ranks.where(rank: n).each_with_index do |rank, index| %>
-		<p>
-			<% if index == 0 %>
-				<%= rank.rank %>등 
-			<% else %>
-				<!-- blank -->
+			<% 1.upto(2).each do |n| %>
+				<% @ranks.where(rank: n).each_with_index do |rank, index| %>
+					<tr>
+						<td style="width: 8%;">
+							<% if index == 0 %>
+								<%= rank.rank %>등 
+							<% end %>
+						</td>
+						<td style="width: 17%;"><%= rank.winners_in_ko %></td>
+						<td style="width: 45%;"><%= rank.winning_in_won %></td>
+						<td style="width: 30%;"><%= rank.total_winning_in_won %></td>
+					</tr>
+				<% end %>
 			<% end %>
+		</tbody>
+	</table>
+</div>
 
-			당첨자수: <%= rank.winners_in_ko %>
-			당첨금액: <%= rank.winning_in_won %>
-			당첨총액: <%= rank.total_winning_in_won %>
-		</p>
-	<% end %>
-<% end %>
-		

@@ -1,0 +1,195 @@
+$desktop-width: 992px;
+$grey-font: #999;
+$red: red;
+$link-blue: #5890ff;
+$link-dark-blue: #387ab5;
+
+// lottery name colors
+$lottery-blue: #004ea2;
+$lottery-green: #90c31f;
+$lotto-sky-blue: #00a0d2;
+$speeto-orange: #f97117;
+
+// lotto ball colors
+$yellow-ball: #fcb220;
+$blue-ball: rgba(0, 102, 255, 0.92);
+$red-ball: #ff250d;
+$black-ball: #555;
+$green-ball: #5bde22;
+
+a {
+	color: $link-blue;
+	&:focus, &:hover {
+		text-decoration: none;
+	}
+}
+
+.red {
+	color: $red;
+	font-family: 'Ubuntu', 'Noto Sans Korean';
+	font-weight: bold;
+}
+
+h1.win {
+	font-size: 1.8em;
+}
+
+.win_date {
+	margin-top: -10px;
+	text-align: right;
+	font-size: .7em;
+	color: $grey-font;
+}
+
+h2.winning {
+	margin-top: 10px;
+	font-size: 1.6em;
+}
+
+@media (min-width: $desktop-width) {
+	h1.win {
+		font-weight: 400;
+		font-size: 2.5em;
+	}
+	.win_date {
+		margin: -10px 20px 10px;
+	}
+	h2.winning {
+		font-size: 2.6em;
+	}
+}
+
+#naver_map {
+	margin-left: -30px;
+}
+
+.addr, .sales_period {
+	margin: 5px -20px 0 0;
+	text-align: right;
+	font-size: .7em;
+	color: $grey-font;
+}
+
+@media (min-width: $desktop-width) {
+	#naver_map {
+		margin-left: 0;
+	}
+	.addr, .sales_period {
+		margin-right: 20px;
+	}
+}
+
+#lotto_numbers {
+	margin: 15px -5px 20px;
+	text-align: center;
+}
+
+.ball {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	margin: 0 3px;
+	text-align: center;
+	color: white;
+	font-size: 22px;
+	&.yellow {
+		background-color: $yellow-ball;
+	}
+	&.blue {
+		background-color: $blue-ball;
+	}
+	&.red {
+		background-color: $red-ball;
+	}
+	&.black {
+		background-color: $black-ball;
+	}
+	&.green {
+		background-color: $green-ball;
+	}
+}
+
+@media (min-width: $desktop-width) {
+	.ball {
+		width: 45px;
+		height: 45px;
+		margin: 0 5px;
+		font-size: 29px;
+	}
+}
+
+h2.total_sales {
+	text-align: center;
+	margin: 0 -20px;	
+	font-size: 1.8em;
+}
+
+@media (min-width: $desktop-width) {
+	h2.total_sales {
+		font-size: 2.6em;
+	}
+}
+
+table.win_numbers {
+	display: table;
+	width: 100%;
+}
+
+table.winners {
+	display: table;
+	width: 100%;
+	th {
+		text-align: center;
+		padding: 3px 0;
+	}
+	td {
+		text-align: center;
+		font-size: .9em;
+		padding: 3px 0;
+	}
+}
+
+@media (min-width: $desktop-width) {
+	table.winners {
+		th {
+			font-size: 1.5em;	
+		}
+		td {
+			font-size: 1.2em;	
+		}
+	}
+}
+
+#news {
+	margin: 10px -15px 30px;
+	padding-top: 15px;
+	border-top: 5px solid $grey-font;
+	.date {
+		margin: -10px 10px 5px 0;
+		color: $grey-font;
+		font-size: .8em;
+		text-align: right;
+	}
+	.content {
+		color: initial;
+	}
+}
+
+.lottery_blue {
+	color: $lottery-blue;
+}
+.lottery_green {
+	color: $lottery-green;
+}
+.lotto_sky_blue {
+	color: $lotto-sky-blue;
+}
+.speeto_orange {
+	color: $speeto-orange;
+}
+
+.sales_period {
+	margin: 5px -10px;
+}
+

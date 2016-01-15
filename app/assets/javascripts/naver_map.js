@@ -33,9 +33,9 @@ function responsiveMapWidth() {
 	var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 
 	if (width > 1200) {
-		width = 585;
+		width = 540;
 	} else if (width > 992) {
-		width = 970;
+		width = 940;
 	} else if (width > 768) {
 		width = 750;
 	}
@@ -116,7 +116,7 @@ function setMapLevel(data) {
 	} else if ( lat_range > 0.01  || lng_range > 0.005 ) {
 	  level = 10;
 	} else {
-	  level = 11;
+	  level = 9;
 	};
 	
 	oMap.setLevel(level);

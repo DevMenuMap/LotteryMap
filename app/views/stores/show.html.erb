@@ -1,29 +1,40 @@
 <div class="container">
-	<!-- store -->
-	<%= @store.name %>
-	<div id="naver_map"></div>
-	<p>위치: <%= @store.addr %></p>
-	<p>
-		<%= @lottery.name(false) %> 
-		<%= @rank.round_in_ko %> 
-		<%= @rank.rank_in_ko %> 당첨!
-	</p>
-	<% if @lottery.date_exists? %>
-		<p><%= @lottery.date_in_ko %></p>
-	<% end %>
-	<p>금액: <%= @rank.winning_in_won %></p>
+	<div class="col-md-6 col-md-offset-3">
+		<!-- store -->
+		<div style="margin: 0 -20px; text-align: center;">
+			<h1 class="win">
+				<%= lottery_name_title(@lottery) %> 
+				<span class="gold"><%= @rank.round_in_ko %></span>
+				<span class="red"><%= @rank.rank_in_ko %></span>
+				당첨점
+			</h1>
+			<% if @lottery.date_exists? %>
+				<p class="win_date">(<%= @lottery.date_in_ko %> 추첨)</p>
+			<% end %>
+			<h2 class="winning">
+				<span class="gold">
+					<% unless @rank.is_pension? && @rank.rank == 1 %>&#8361; <% end %>
+					<%= @rank.winning_in_won %>
+				<span>
+			</h2>
+		</div>
 
-	<!-- lottery -->
-	<% if @lottery.is_lotto? %>
-		<%= render 'lotto' %>
-	<% elsif @lottery.is_pension? %>	
-		<%= render 'pension' %>
-	<% else %>
-		<%= render 'speeto' %>
-	<% end %>
+		<!-- map -->
+		<div id="naver_map"></div>
+		<p class="addr">(위치: <%= @store.addr %>)</p>
 
-	<!-- news -->
-	<div id="news"></div>
+		<!-- lottery -->
+		<% if @lottery.is_lotto? %>
+			<%= render 'lotto' %>
+		<% elsif @lottery.is_pension? %>	
+			<%= render 'pension' %>
+		<% else %>
+			<%= render 'speeto' %>
+		<% end %>
+
+		<!-- news -->
+		<div id="news"></div>
+	</div>
 </div>
 
 <script>

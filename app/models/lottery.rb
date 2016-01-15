@@ -23,7 +23,23 @@ class Lottery < ActiveRecord::Base
 	end
 
 	def sales_in_won
-		number_with_delimiter(total_sales) + '원'
+		number_with_delimiter(total_sales) + '원(' + sales_in_ko + ')'
+	end
+
+	def sales_in_ko
+		n = total_sales / 10**8
+		n.to_s + '억'
+	end
+
+	def speeto_num
+		case category_id
+		when 3
+			500
+		when 4
+			1000
+		when 5
+			2000
+		end
 	end
 
 	def date_exists?
