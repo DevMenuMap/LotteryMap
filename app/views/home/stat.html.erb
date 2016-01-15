@@ -1,1 +1,17 @@
-HELLO
+<div>
+	<h3>LOTTO</h3>
+	<p>총 판매액(~ 현재)</p>
+	<p>&#8361;<%= @total[:sum] %>원</p>
+	<% for i in 0..4 %>
+		<p><%= i+1 %>등</p>
+		<p>총 당첨 금액(인원수)</p>
+		<p>&#8361;<%= @sum_of_xth[i].last %>원 (<%= @sum_of_xth[i].first %>명)</p>
+		<p>평균 당첨 금액</p>
+		<p>&#8361;<%= @avg_of_xth[i] %>원</p>
+		<p>가장 큰 당첨 금액</p>
+		<p>&#8361;<%= @max_of_xth[i].first %>원 (<%= @max_of_xth[i].last %> 회차)</p>
+		<br/>
+	<% end %>
+	<p>가장 높았던 판매량(~ 현재)</p>
+	<p>&#8361;<%= @total[:max] %>원 (<%= @total[:max_round] %> 회차)</p>
+</div>
