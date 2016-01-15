@@ -1,0 +1,7 @@
+<% @naver_news.each do |news| %>
+	<%= link_to news[:link], class: "news", target: "_blank" do %>
+		<p class="title"><%= news[:title].html_safe %></p>
+		<p class="date">(<%= news_pub_date(news[:pub_date]) %>)</p>
+		<p class="content"><%= news[:description].html_safe %></p>
+	<% end %>
+<% end %>

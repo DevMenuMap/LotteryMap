@@ -1,0 +1,84 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
+/* variables */
+$gold: #daa520;
+$dark-gold: rgba(153, 101, 21, 0.73);
+$desktop-width: 992px;
+
+html, body, h1, h2, h3, h4, h5, h6, p, a, input, textarea, button {
+	font-family: 'Noto Sans Korean', sans-serif;
+}
+
+html, body {
+	height: 100%;
+}
+
+.navbar {
+	border-bottom: 0;
+	margin-bottom: 0;
+	.container {
+		padding: 0; 
+		[class^="col-md"] {
+		padding: 0;
+		}
+	}
+}
+
+.navbar-default {
+	.navbar-brand {
+		font-size: 1.8em;
+		font-weight: bold;
+		@extend .gold;
+	}
+}
+
+@media (min-width: $desktop-width) {
+	.navbar {
+		min-height: 70px;
+		.container {
+			margin-top: 10px;
+			padding: 0 15px;
+			[class^="col-md"] {
+				padding: 0 15px;
+			}
+		}
+	}
+}
+
+.gold {
+	font-family: 'Ubuntu', 'Noto Sans Korean';
+	font-weight: bold;
+	color: $gold;
+}
+
+a.gold {
+	&:hover, &:focus {
+		color: $dark-gold;
+		outline: none;
+	}	
+}
+.ubuntu {
+	font-family: 'Ubuntu', 'Noto Sans Korean';
+}
+
+#home {
+	height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("/images/money.jpg") center center fixed; 
+	color: white;
+	text-align: center;	
+	h1 {
+		margin: 1em 0 .3em;
+		font-size: 4em;
+	}
+}
+
+@media (min-width: $desktop-width) {
+	#home {
+		h1 {
+			font-size: 10em;
+		}
+		p {
+			font-size: 2em;
+		}
+	}
+}

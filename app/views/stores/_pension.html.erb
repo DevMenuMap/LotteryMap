@@ -1,0 +1,51 @@
+<div style="margin: 15px -10px;">
+	<table class="winners">
+		<tbody>
+			<tr>
+				<th></th>
+				<th>당첨자</th>
+				<th>당첨금</th>
+				<th>당첨 총액</th>
+			</tr>
+
+			<% 1.upto(7).each do |n| %>
+				<tr>
+					<% ranks = @ranks.where(rank: n) %>
+					<td style="width: 7%;">
+						<%= ranks.first.rank %>등 
+					</td>
+					<td style="width: 23%;"><%= pension_multiplier(ranks.first.total_winners, ranks.count) %>명</td>
+					<td style="width: 40%;"><%= ranks.first.winning_in_won %></td>
+					<td style="width: 35%;"><%= pension_multiplier(ranks.first.winning * ranks.first.total_winners, ranks.count) %>원</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+<div style="margin: 15px -10px;">
+	<table class="win_numbers">
+		<tbody>
+			<tr>
+				<th style="width: 10%;"></th>
+				<th style="width: 90%; text-align: center;" colspan="7">당첨 번호</th>
+			</tr>
+			<% 1.upto(7).each do |n| %>
+				<% @ranks.where(rank: n).each_with_index do |rank, index| %>
+					<tr>
+						<td style="width: 15%;">
+							<% if index == 0 %>
+								<%= rank.rank %>등
+							<% end %>
+						</td>
+						<td style="width: 15%;"><%= special_number(rank) %></td>
+						<% rank.rank_nums.where("special = 0").each do |number| %>			
+							<td style="width: 10%;"><%= number_or_blank(number) %></td>
+						<% end %>
+					</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+		

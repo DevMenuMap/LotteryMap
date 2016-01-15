@@ -12,10 +12,12 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+  # pool: 5
+  username: dev
+  password: startup2016
+  # socket: /var/run/mysqld/mysqld.sock
+  host: 'lotterymaprds.ciokfcz6sk8p.ap-northeast-2.rds.amazonaws.com'
+  port: '3306'
 
 development:
   <<: *default
@@ -50,5 +52,3 @@ test:
 production:
   <<: *default
   database: LotteryMap_production
-  username: LotteryMap
-  password: <%= ENV['LOTTERYMAP_DATABASE_PASSWORD'] %>
