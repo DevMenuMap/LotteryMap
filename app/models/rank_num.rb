@@ -3,5 +3,5 @@ class RankNum < ActiveRecord::Base
   belongs_to :rank
 
 	# Default scope
-	default_scope { order(:rank_id, :order) }
+	default_scope { order(:rank_id, :position) }
 end
