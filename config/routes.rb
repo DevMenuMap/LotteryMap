@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
 	resources :stores
+	resources :winners, only: [:index]
 
   get 'portals/:id/news' => 'portals#news', as: :news
 

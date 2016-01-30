@@ -1,8 +1,31 @@
 <div id="home">
-	<div class="container" style="color: white;">
-		<h1 class="ubuntu">LotteryMap</h1>
-		<p>로또(Lotto), 연금복권, 스피또의 
-		<br class="visible-xs-inline" />
-		당첨통계, 당첨점 검색 서비스</p>
+	<div>
+		<div class="container" style="color: white;">
+			<h1 class="ubuntu">LotteryMap</h1>
+			<p>로또(Lotto), 연금복권, 스피또의 
+			<br class="visible-xs-inline" />
+			당첨통계, 당첨점 검색 서비스</p>
+		</div>
+
+		<div>
+			<%= form_tag winners_path, id: "winners_search", method: :get do %>
+				<div class="form-group">
+					<!-- options_for_select(options[text, value], selected) -->
+					<div class="col-xs-6" style="padding: 0 5px 0 0;">
+						<%= select_tag :category, 
+									options_for_select(@categories.map{ |c| [c.short_name] }, nil), 
+															 { id: "category", class: "form-control" } %>
+					</div>
+
+					<div class="col-xs-6" style="padding: 0 0 0 5px;">
+						<%= select_tag :round, 
+									options_for_select(@rounds.map{ |r| [round(r)] }, nil),
+																	{ id: "round", class: "form-control" } %>
+					</div>
+				</div>
+
+				<%= button_tag "검색", name: nil, class: "btn btn_submit" %>
+			<% end %>
+		</div>
 	</div>
 </div>
