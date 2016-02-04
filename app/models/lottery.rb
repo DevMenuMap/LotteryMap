@@ -6,6 +6,22 @@ class Lottery < ActiveRecord::Base
   belongs_to :category
 	has_many :ranks
 
+	# Class methods
+	def self.category_params(params)
+		case params
+		when "로또"
+			where("category_id = 1")
+		when "연금복권"
+			where("category_id = 2")
+		when "스피또500"
+			where("category_id = 3")
+		when "스피또1000"
+			where("category_id = 4")
+		when "스피또2000"
+			where("category_id = 5")
+		end
+	end
+
 	# Instance methods
 	def name(short = true)
 		case category_id

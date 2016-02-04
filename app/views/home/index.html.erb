@@ -7,24 +7,27 @@
 			당첨통계, 당첨점 검색 서비스</p>
 		</div>
 
-		<div>
+		<div class="container">
 			<%= form_tag winners_path, id: "winners_search", method: :get do %>
 				<div class="form-group">
 					<!-- options_for_select(options[text, value], selected) -->
-					<div class="col-xs-6" style="padding: 0 5px 0 0;">
+					<div class="col-xs-4 col-xs-offset-2" style="padding: 0 5px 0 0;">
 						<%= select_tag :category, 
 									options_for_select(@categories.map{ |c| [c.short_name] }, nil), 
-															 { id: "category", class: "form-control" } %>
+								  { id: "category", class: "form-control", 
+																		onchange: "changeRounds()" } %>
 					</div>
 
-					<div class="col-xs-6" style="padding: 0 0 0 5px;">
+					<div class="col-xs-4" style="padding: 0 0 0 5px;">
 						<%= select_tag :round, 
 									options_for_select(@rounds.map{ |r| [round(r)] }, nil),
 																	{ id: "round", class: "form-control" } %>
 					</div>
 				</div>
 
-				<%= button_tag "검색", name: nil, class: "btn btn_submit" %>
+				<div class="col-xs-4 col-xs-offset-4">
+					<%= button_tag "검색", name: nil, class: "btn btn-block" %>
+				</div>
 			<% end %>
 		</div>
 	</div>
