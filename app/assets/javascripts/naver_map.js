@@ -45,7 +45,11 @@ function responsiveMapWidth() {
 
 // Show MyMap's group markers and set center of those markers.
 function mapAndMarkers(info) {
-	var jsonUrl = window.location.href + '.json';
+	if ( window.location.href.match(/.*\/winners\?/) ) {
+		var jsonUrl = window.location.href.replace('/winners?', '/winners.json?');
+	} else {
+		var jsonUrl = window.location.href + '.json';
+	}
 
 	$.getJSON( jsonUrl )
 		.done( function(data) {
@@ -103,7 +107,9 @@ function setMapLevel(data) {
 	lat_range = lat_max - lat_min;
 	lng_range = lng_max - lng_min;
 
-	if ( lat_range > 0.28 || lng_range > 0.18 ) {
+	if ( lat_range > 1 || lng_range > 1 ) {
+		level = 2;
+	} else if ( lat_range > 0.28 || lng_range > 0.18 ) {
 		level = 5;
 	} else if ( lat_range > 0.15  || lng_range > 0.09  ) {
 	  level = 6;
