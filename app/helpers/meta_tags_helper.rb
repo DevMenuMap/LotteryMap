@@ -54,6 +54,7 @@ module MetaTagsHelper
 	end
 
 	def winners_meta_title(winners)
+		return if winners.blank?
 		rank = winners.first.rank
 		lottery = rank.lottery
 		title = lottery.name + ' '
@@ -61,6 +62,7 @@ module MetaTagsHelper
 	end
 
 	def winners_meta_description(winners)
+		return if winners.blank?
 		rank = winners.first.rank
 		lottery = rank.lottery
 
