@@ -12,7 +12,7 @@
 				<div class="form-group">
 					<!-- options_for_select(options[text, value], selected) -->
 					<div class="col-xs-4 col-xs-offset-2" style="padding: 0 5px 0 0;">
-						<%= select_tag :category, 
+						<%= select_tag :lottery, 
 									options_for_select(@categories.map{ |c| [c.short_name] }, nil), 
 								  { id: "category", class: "form-control", 
 																		onchange: "changeRounds()" } %>
@@ -26,7 +26,7 @@
 				</div>
 
 				<div class="col-xs-4 col-xs-offset-4">
-					<%= button_tag "검색", name: nil, class: "btn btn-block" %>
+					<%= button_tag "당첨점 검색", name: nil, class: "btn btn-block" %>
 				</div>
 			<% end %>
 		</div>

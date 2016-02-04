@@ -3,11 +3,15 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="navbar-header">
 				<%= link_to "LotteryMap", root_path, class: "navbar-brand gold" %>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="nav_list" style="border: none; margin-bottom: 0; margin-right: 5px;"> 
+					<span class="glyphicon glyphicon-option-vertical"></span>
+				</button>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="navbar-collapse">
+			<div class="collapse navbar-collapse" id="nav_list">
 				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to "당첨점 검색" , root_path %></li>
 				</ul>
 			</div>
 		</div>
