@@ -1,15 +1,19 @@
 module MetaTagsHelper
-	def meta_title(store)
+	def meta_title(store_or_winners)
 		if params[:controller] == 'stores' && params[:action] == 'show'
-			store_meta_title(store)	
+			store_meta_title(store_or_winners)	
+		elsif params[:controller] == 'winners' && params[:action] == 'index'
+			winners_meta_title(store_or_winners)
 		else
 			basic_meta_title
 		end
 	end
 
-	def meta_description(store)
+	def meta_description(store_or_winners)
 		if params[:controller] == 'stores' && params[:action] == 'show'
-			store_meta_description(store)	
+			store_meta_description(store_or_winners)	
+		elsif params[:controller] == 'winners' && params[:action] == 'index'
+			winners_meta_description(store_or_winners)
 		else
 			basic_meta_description
 		end	
@@ -28,7 +32,7 @@ module MetaTagsHelper
 		title += store.rank.lottery.name(false) + ' '
 		title += store.rank.round_in_ko + '차 '
 		title += store.rank.rank_in_ko + ' 당첨 판매점'
-		title += '(' + store.short_addr + ')'
+		title += '(' + store.short_addr + ') || LotteryMap'
 	end
 
 	def store_meta_description(store)
@@ -47,5 +51,24 @@ module MetaTagsHelper
 		end
 		desc += ', 판매점 주소: '
 		desc += store.addr
+	end
+
+	def winners_meta_title(winners)
+		rank = winners.first.rank
+		lottery = rank.lottery
+		title = lottery.name + ' '
+		title += rank.round_in_ko + '차 1등, 2등 당첨점 검색결과 || LotteryMap'
+	end
+
+	def winners_meta_description(winners)
+		rank = winners.first.rank
+		lottery = rank.lottery
+
+		desc = rank.round_in_ko + '차 '
+		desc += lottery.name(false)
+		if lottery.date_exists?
+			desc += '(' + lottery.date_in_ko + ' 추첨)'
+		end
+		desc += '의 1등, 2등 당첨점(명당 판매점) LotteryMap 검색 결과입니다.'
 	end
 end

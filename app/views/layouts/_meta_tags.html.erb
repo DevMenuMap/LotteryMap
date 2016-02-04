@@ -1,8 +1,8 @@
-<title><%= meta_title(@store) %></title>
-<meta name="description" content="<%= meta_description(@store) %>" />
+<title><%= meta_title(@store || @winners) %></title>
+<meta name="description" content="<%= meta_description(@store || @winners) %>" />
 
 <!-- open graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="<%= meta_title(@store) %>">
-<meta property="og:description" content="<%= meta_description(@store) %>">
+<meta property="og:title" content="<%= meta_title(@store || @winners) %>">
+<meta property="og:description" content="<%= meta_description(@store || @winners) %>">
 <meta property="og:url" content="http://lotterymap.co.kr">
