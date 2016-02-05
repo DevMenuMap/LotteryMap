@@ -14,9 +14,9 @@ class StoreErrsController < ApplicationController
   def create
 		@store_err = StoreErr.new(store_err_params)
 		if @store_err.save
-			flash[:success] = "판매점 오류 신고가 접수되었습니다."
+			flash.now[:success] = "판매점 오류 신고가 접수되었습니다."
 		else
-			flash[:danger] = "내용을 적어주세요."
+			flash.now[:danger] = "내용을 적어주세요."
 		end
 
 		respond_to do |format|
