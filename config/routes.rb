@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
 	# sitemap
 	get 'sitemap.xml'  => 'crawlers#google', defaults: { format: 'xml' }
 	get 'sitemap.atom' => 'crawlers#naver',  defaults: { format: 'atom' }
@@ -6,37 +7,23 @@ Rails.application.routes.draw do
 	# home
   root 'home#index'
 
-	resources :stores
+	resources :stores, shallow: true do
+		resources :store_errs, only: [:new, :create, :destroy]
+	end
+	resources :store_errs, only: [:index]
 	resources :winners, only: [:index]
 
 	get 'home/change_rounds'
   get 'portals/:id/news' => 'portals#news', as: :news
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+  devise_for :users, controllers: {
+		passwords: "users/passwords",
+		registrations: "users/registrations",
+		sessions: "users/sessions",
+		confirmations: "users/confirmations",
+		# unlocks: "users/unlocks",
+		# omniauth_callbacks: "users/omniauth_callbacks"
+	}
 
   # Example resource route with concerns:
   #   concern :toggleable do

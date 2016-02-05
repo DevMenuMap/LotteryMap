@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115054805) do
+ActiveRecord::Schema.define(version: 20160205123709) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(version: 20160115054805) do
 
   add_index "ranks", ["lottery_id"], name: "index_ranks_on_lottery_id", using: :btree
 
+  create_table "store_errs", force: :cascade do |t|
+    t.integer  "store_id",   limit: 4
+    t.string   "email",      limit: 255
+    t.string   "content",    limit: 255
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.boolean  "active",     limit: 1,   default: true
+  end
+
+  add_index "store_errs", ["store_id"], name: "index_store_errs_on_store_id", using: :btree
+
   create_table "stores", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "addr",       limit: 255
@@ -61,6 +72,24 @@ ActiveRecord::Schema.define(version: 20160115054805) do
     t.decimal  "lng",                    precision: 11, scale: 8
     t.boolean  "around",     limit: 1,                            default: false
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "winners", force: :cascade do |t|
     t.integer  "store_id",   limit: 4
@@ -76,6 +105,7 @@ ActiveRecord::Schema.define(version: 20160115054805) do
   add_foreign_key "lotteries", "categories"
   add_foreign_key "rank_nums", "ranks"
   add_foreign_key "ranks", "lotteries"
+  add_foreign_key "store_errs", "stores"
   add_foreign_key "winners", "ranks"
   add_foreign_key "winners", "stores"
 end

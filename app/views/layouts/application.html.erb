@@ -29,7 +29,15 @@
 	<body>
 		<%= render 'layouts/header' %>
 
+		<!-- Flash -->
+		<div id="flash" style="width: 100%; position: fixed; top: 0;">
+			<%= render "shared/flash" %>
+		</div>
+
 		<%= yield %>
+
+		<!-- Modal -->
+		<%= render "shared/modal" %>
 
 		<script>
 			ga('send', 'pageview', '<%= request.path %>');

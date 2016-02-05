@@ -1,0 +1,4 @@
+ko:
+  devise:
+    failure:
+      unauthenticated: "이용이 불가능한 페이지입니다. rails를 아시는군요?"
