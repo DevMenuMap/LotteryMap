@@ -1,0 +1,3 @@
+$("#round").html("<%= 
+	j(options_for_select(@rounds.map{ |r| [round(r)] }, nil))
+%>")

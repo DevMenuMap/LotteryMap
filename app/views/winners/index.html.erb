@@ -1,0 +1,13 @@
+<div id="naver_map"></div>
+
+<% @winners.each_with_index do |winner, index| %>
+	<%= link_to store_path(winner.store) do %>
+		<p><%= index %> | <%= winner.store.addr %></p>
+	<% end %>
+<% end %>
+
+<script>
+	$(document).ready(function() {
+		loadNaverMap()
+	});
+</script>

@@ -5,8 +5,8 @@ module Naver
 	### Constants
 	# API keys
 	if Rails.env.development?
-		MAP_KEY = 'b479fb2352534a9ee7313a9938cda773'
-		# MAP_KEY = '0fa2e38c14674111754e3fa223c439b7'
+		# MAP_KEY = 'b479fb2352534a9ee7313a9938cda773'
+		MAP_KEY = '0fa2e38c14674111754e3fa223c439b7'
 	elsif Rails.env.production?
 		MAP_KEY = '13d6b502dd6de2a19c6fdaee4f4523e7'
 	end

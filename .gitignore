@@ -12,6 +12,7 @@
 !/log/.keep
 /tmp
 *.swp
+.byebug_history
 
 # db
 /db/seed_data/*
