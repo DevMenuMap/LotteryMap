@@ -4,4 +4,7 @@ class StoreErr < ActiveRecord::Base
 
 	# Scopes
 	default_scope { where(active: true) }
+
+	# Validations
+	validates :content, presence: true
 end

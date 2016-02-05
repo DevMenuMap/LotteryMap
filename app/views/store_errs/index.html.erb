@@ -1,2 +1,18 @@
-<h1>StoreErrs#index</h1>
-<p>Find me in app/views/store_errs/index.html.erb</p>
+<table id="report" border="3">
+	<tr>
+		<th style="min-width: 60px;">id</th>
+		<th style="min-width: 200px;">email</th>
+		<th style="min-width: 800px;">content</th>
+		<th style="min-width: 200px;">created_at</th>
+		<th style="min-width: 60px;"></th>
+	<tr>
+	<% @store_errs.each do |err| %>
+		<tr>
+			<td><%= err.id %></td>
+			<td><%= err.email %></td>
+			<td><%= err.content %></td>
+			<td><%= simple_time_form(err.created_at) %></td>
+			<td><%= link_to "destroy", store_err_path(err), method: :delete %></td>
+		</tr>
+	<% end %>
+</table>
