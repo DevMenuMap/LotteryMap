@@ -1,4 +1,6 @@
 class StoreErrsController < ApplicationController
+	before_action :authenticate_user!, except: [:new, :create]
+
   def index
 		@store_errs = StoreErr.all
   end

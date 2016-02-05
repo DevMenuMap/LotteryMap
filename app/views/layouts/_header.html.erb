@@ -12,6 +12,12 @@
 			<div class="collapse navbar-collapse" id="nav_list">
 				<ul class="nav navbar-nav navbar-right">
 					<li><%= link_to "당첨점 검색" , root_path %></li>
+					<% if !current_user.nil? %>
+						<li>
+							here is a user
+							<%= link_to "sign_out", destroy_user_session_path(@current_user), method: :delete %>
+						</li>
+					<% end %>
 				</ul>
 			</div>
 		</div>
