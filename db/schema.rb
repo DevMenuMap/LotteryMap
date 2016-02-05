@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115054805) do
+ActiveRecord::Schema.define(version: 20160205021308) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20160115054805) do
 
   add_index "ranks", ["lottery_id"], name: "index_ranks_on_lottery_id", using: :btree
 
+  create_table "store_errs", force: :cascade do |t|
+    t.integer  "store_id",   limit: 4
+    t.string   "email",      limit: 255
+    t.string   "content",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "store_errs", ["store_id"], name: "index_store_errs_on_store_id", using: :btree
+
   create_table "stores", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "addr",       limit: 255
@@ -76,6 +86,7 @@ ActiveRecord::Schema.define(version: 20160115054805) do
   add_foreign_key "lotteries", "categories"
   add_foreign_key "rank_nums", "ranks"
   add_foreign_key "ranks", "lotteries"
+  add_foreign_key "store_errs", "stores"
   add_foreign_key "winners", "ranks"
   add_foreign_key "winners", "stores"
 end

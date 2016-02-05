@@ -34,6 +34,10 @@
 
 		<!-- news -->
 		<div id="news"></div>
+
+		<%= link_to new_store_store_err_path(@store), remote: true, data: { toggle: "modal", target: "#modal" } do %>
+			당첨점 정보가 틀렸나요?
+		<% end %>
 	</div>
 </div>
 

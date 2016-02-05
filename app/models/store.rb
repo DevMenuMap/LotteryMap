@@ -8,6 +8,7 @@ class Store < ActiveRecord::Base
 	# Associations
 	has_many :winners
 	has_many :ranks, through: :winners
+	has_many :store_errs
 	
 	# Class methods
 	def self.save_latlng

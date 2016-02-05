@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
 	# sitemap
 	get 'sitemap.xml'  => 'crawlers#google', defaults: { format: 'xml' }
 	get 'sitemap.atom' => 'crawlers#naver',  defaults: { format: 'atom' }
@@ -6,7 +7,10 @@ Rails.application.routes.draw do
 	# home
   root 'home#index'
 
-	resources :stores
+	resources :stores, shallow: true do
+		resources :store_errs, only: [:new, :create, :destroy]
+	end
+	resources :store_errs, only: [:index]
 	resources :winners, only: [:index]
 
 	get 'home/change_rounds'
